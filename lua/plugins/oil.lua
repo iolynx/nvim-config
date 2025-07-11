@@ -1,6 +1,6 @@
 return {
-  'stevearc/oil.nvim',
-  init = function()
-    require('oil').setup()
-  end,
+	"stevearc/oil.nvim",
+	init = function()
+		require("oil").setup()
+	end,
 }

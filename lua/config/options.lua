@@ -58,24 +58,41 @@ vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#7A8382" })
 --Cursor options
 vim.api.nvim_set_hl(0, "Cursor", { fg = "red", bg = "white" })
 -- vim.opt.guicursor = "n-v-c:block,i-ci-ve:block/Cursor,r-cr:hor20"
-vim.opt.guicursor = "n-v-c:block,i-ci-ve:hor30,r-cr:hor20"
+vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
+	.. "i-ci:block/lCursor,"
+	.. "ve:ver35-Cursor,"
+	.. "r-cr:hor20-Cursor/lCursor,"
+	.. "o:hor50-Cursor,"
+	.. "sm:block-Cursor-blinkwait575-blinkoff550-blinkon575,"
+	.. "a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor"
 -- vim.opt.guicursor = 'n-v-c-i:block'
 
 -- Neovide only options:
 if vim.g.neovide then
 	vim.g.neovide_title_text_color = "white"
-	vim.g.neovide_fullscreen = false
-	vim.opt.guicursor = "n-v-c:block,i-ci-ve:hor22,r-cr:hor20"
+	-- vim.opt.guicursor = "n-v-c:block,i-ci-ve:hor15,r-cr:hor20"
+
+	vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
+		.. "i-ci:hor18-Cursor/lCursor,"
+		.. "ve:ver35-Cursor,"
+		.. "r-cr:hor20-Cursor/lCursor,"
+		.. "o:hor50-Cursor,"
+		.. "sm:block-Cursor-blinkwait175-blinkoff150-blinkon175,"
+		.. "a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor"
 	-- vim.opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20"   -- only block
+
+	vim.g.neovide_opacity = 0.55
 	vim.g.neovide_window_blurred = true
-	vim.g.neovide_opacity = 1
-	vim.g.neovide_normal_opacity = 0.4
-	vim.g.neovide_window_blurred = true
+	vim.g.neovide_floating_blur_amount_x = 1.5
+	vim.g.neovide_floating_blur_amount_y = 1.5
+	vim.g.neovide_fullscreen = false
 
 	-- cursor animation length (lesser is faster)
-	vim.g.neovide_cursor_animation_length = 0.03
+	vim.g.neovide_cursor_animation_length = 0.035
+	vim.g.neovide_refresh_rate = 150
+	vim.g.neovide_cursor_vfx_mode = "pixiedust"
 
 	-- vim.opt.guifont = "0xProto\\ Nerd\\ Font:h11"
-	vim.opt.guifont = "Iosevka\\ Nerd\\ Font:h15"
-	-- vim.opt.guifont = "CaskaydiaCove \\NF:h13"
+	vim.opt.guifont = "Iosevka\\ Nerd\\ Font:h11"
+	-- vim.opt.guifont = "CaskaydiaCove \\NF:h11"
 end

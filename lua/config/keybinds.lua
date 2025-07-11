@@ -33,8 +33,8 @@ vim.keymap.set("n", "<S-y>", '"+y')
 vim.keymap.set("i", "<C-S-v>", '<Esc>"+pa')
 
 -- For switching between buffers using Alt H, L
-vim.api.nvim_set_keymap("n", "<M-h>", ":bprev<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<M-l>", ":bnext<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<M-h>", ":BufferLineCyclePrev<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<M-l>", ":BufferLineCycleNext<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<M-i>", ":bd!<CR>", { noremap = true })
 
 -- Ctrl Backspace
@@ -46,16 +46,17 @@ vim.api.nvim_set_keymap("i", "<C-BS>", "<C-w>", { noremap = true })
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- these are all barbar commands, im not using barbar anymore so commenting them
 -- Move to previous/next
-map("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
+-- map("n", "<A-h>", "<Cmd>BufferPrevious<CR>", opts)
+-- map("n", "<A-l>", "<Cmd>BufferNext<CR>", opts)
 
 -- Re-order to previous/next
-map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
-map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
+-- map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
+-- map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
 
 -- Close buffer
-map("n", "<A-i>", "<Cmd>BufferClose<CR>", opts)
+-- map("n", "<A-i>", "<Cmd>BufferClose<CR>", opts)
 
 -- Magic buffer-picking mode
 map("n", "<A-p>", "<Cmd>BufferPick<CR>", opts)
@@ -67,3 +68,7 @@ map("n", "<leader>bn", "<Cmd>BufferOrderByName<CR>", opts)
 map("n", "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
 map("n", "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 map("n", "<leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
+
+-- for shifting lines with J K etc (i think)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv-gv")

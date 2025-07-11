@@ -13,9 +13,16 @@ return {
 			-- your own keymap.
 			keymap = { preset = "super-tab" },
 
+			draw = {
+				columns = {
+					{ "label", "label description", gap = 1 },
+					{ "kind_icon", "kind" },
+				},
+			},
+
 			completion = {
 				menu = { winblend = 0, border = "single" },
-				documentation = { window = { border = "single" } },
+				documentation = { auto_show = true, auto_show_delay_ms = 300, window = { border = "single" } },
 			},
 
 			appearance = {

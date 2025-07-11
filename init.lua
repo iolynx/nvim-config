@@ -190,9 +190,6 @@ require("lazy").setup({
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{ "j-hui/fidget.nvim", opts = {} },
-
-			-- Allows extra capabilities provided by nvim-cmp
-			"saghen/blink.cmp",
 		},
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -225,8 +222,21 @@ require("lazy").setup({
 
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-					-- WARN: This is not Goto Definition, this is Goto Declaration.
+					-- This is not Goto Definition, this is Goto Declaration.
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+					---@param client vim.lsp.Client
+					---@param method vim.lsp.protocol.Method
+					---@param bufnr? integer some lsp support methods only in specific files
+					---@return boolean
+					local function client_supports_method(client, method, bufnr)
+						if vim.fn.has("nvim-0.11") == 1 then
+							return client:supports_method(method, bufnr)
+						else
+							return client.supports_method(method, { bufnr = bufnr })
+						end
+					end
 
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -279,10 +289,10 @@ require("lazy").setup({
 				clangd = {},
 				pyright = {},
 				ts_ls = {},
-
+				tailwindcss = {},
 				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
+					-- cmd = { "typescript-language-server", "--stdio" },
+					-- filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
 					-- capabilities = {},
 					settings = {
 						Lua = {

@@ -58,14 +58,21 @@ vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#7A8382" })
 --Cursor options
 vim.api.nvim_set_hl(0, "Cursor", { fg = "red", bg = "white" })
 -- vim.opt.guicursor = "n-v-c:block,i-ci-ve:block/Cursor,r-cr:hor20"
+
 vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
-	.. "i-ci:block/lCursor,"
+	.. "i-ci:block-Cursor/lCursor-blinkwait200-blinkoff500-blinkon500,"
 	.. "ve:ver35-Cursor,"
 	.. "r-cr:hor20-Cursor/lCursor,"
 	.. "o:hor50-Cursor,"
-	.. "sm:block-Cursor-blinkwait575-blinkoff550-blinkon575,"
-	.. "a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor"
--- vim.opt.guicursor = 'n-v-c-i:block'
+	.. "sm:block-Cursor"
+
+-- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
+-- 	.. "i-ci:block/lCursor,"
+-- 	.. "ve:ver35-Cursor,"
+-- 	.. "r-cr:hor20-Cursor/lCursor,"
+-- 	.. "o:hor50-Cursor,"
+-- 	.. "sm:block-Cursor-blinkwait575-blinkoff550-blinkon575,"
+-- 	.. "a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor"
 
 -- Neovide only options:
 if vim.g.neovide then
